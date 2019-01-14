@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=JESUS;Database=prueba;Trusted_Connection=True;"
+  }
+}
