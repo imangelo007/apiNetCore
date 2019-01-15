@@ -24,7 +24,7 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public IEnumerable<B> GetAb()
         {
-            var r = _context.Ab.Include(x => x.IdbNavigation).Select(s => new B{ Nombre = s.IdbNavigation.Nombre}).ToList();
+            var r = _context.Ab.Where(x => x.Ida == 1).Include(x => x.IdbNavigation).Select(s => new B{ Nombre = s.IdbNavigation.Nombre, Id = s.Id}).ToList();
             return r;
         }
 
