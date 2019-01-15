@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[ab]
+(
+	[Ida] INT NOT NULL, 
+    [Idb] INT NOT NULL, 
+    [id] INT NOT NULL IDENTITY(1,1), 
+    CONSTRAINT FK_ab_a FOREIGN KEY (Ida) REFERENCES a(Id),
+	CONSTRAINT FK_ab_b FOREIGN KEY (Idb) REFERENCES b(Id), 
+    CONSTRAINT [PK_ab] PRIMARY KEY ([id]),
+)

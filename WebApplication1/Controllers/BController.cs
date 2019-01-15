@@ -9,58 +9,58 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
-    public class CursosController : ControllerBase
+    public class BController : ControllerBase
     {
-        private readonly pruebaContext _context;
+        private readonly abcContext _context;
 
-        public CursosController(pruebaContext context)
+        public BController(abcContext context)
         {
             _context = context;
         }
 
-        // GET: api/Cursos
+        // GET: api/B
         [HttpGet]
-        public IEnumerable<Cursos> GetCursos()
+        public IEnumerable<B> GetB()
         {
-            return _context.Cursos;
+            return _context.B;
         }
 
-        // GET: api/Cursos/5
+        // GET: api/B/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCursos([FromRoute] int id)
+        public async Task<IActionResult> GetB([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var cursos = await _context.Cursos.FindAsync(id);
+            var b = await _context.B.FindAsync(id);
 
-            if (cursos == null)
+            if (b == null)
             {
                 return NotFound();
             }
 
-            return Ok(cursos);
+            return Ok(b);
         }
 
-        // PUT: api/Cursos/5
+        // PUT: api/B/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCursos([FromRoute] int id, [FromBody] Cursos cursos)
+        public async Task<IActionResult> PutB([FromRoute] int id, [FromBody] B b)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != cursos.Id)
+            if (id != b.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(cursos).State = EntityState.Modified;
+            _context.Entry(b).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace WebApplication1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CursosExists(id))
+                if (!BExists(id))
                 {
                     return NotFound();
                 }
@@ -81,45 +81,45 @@ namespace WebApplication1.Controllers
             return NoContent();
         }
 
-        // POST: api/Cursos
+        // POST: api/B
         [HttpPost]
-        public async Task<IActionResult> PostCursos([FromBody] Cursos cursos)
+        public async Task<IActionResult> PostB([FromBody] B b)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Cursos.Add(cursos);
+            _context.B.Add(b);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCursos", new { id = cursos.Id }, cursos);
+            return CreatedAtAction("GetB", new { id = b.Id }, b);
         }
 
-        // DELETE: api/Cursos/5
+        // DELETE: api/B/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCursos([FromRoute] int id)
+        public async Task<IActionResult> DeleteB([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var cursos = await _context.Cursos.FindAsync(id);
-            if (cursos == null)
+            var b = await _context.B.FindAsync(id);
+            if (b == null)
             {
                 return NotFound();
             }
 
-            _context.Cursos.Remove(cursos);
+            _context.B.Remove(b);
             await _context.SaveChangesAsync();
 
-            return Ok(cursos);
+            return Ok(b);
         }
 
-        private bool CursosExists(int id)
+        private bool BExists(int id)
         {
-            return _context.Cursos.Any(e => e.Id == id);
+            return _context.B.Any(e => e.Id == id);
         }
     }
 }

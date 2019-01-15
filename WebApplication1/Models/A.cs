@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace WebApplication1.Models
 {
-    public partial class Usuario
+    public partial class A
     {
-        public Usuario()
+        public A()
         {
-            Cursos = new HashSet<Cursos>();
+            Ab = new HashSet<Ab>();
         }
 
         public int Id { get; set; }
         public string Nombre { get; set; }
 
-        public ICollection<Cursos> Cursos { get; set; }
+        public ICollection<Ab> Ab { get; set; }
     }
 }
