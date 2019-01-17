@@ -10,8 +10,7 @@ namespace WebApplication1.Models
         {
         }
 
-        public abcContext(DbContextOptions<abcContext> options)
-            : base(options)
+        public abcContext(DbContextOptions<abcContext> options): base(options)
         {
         }
 

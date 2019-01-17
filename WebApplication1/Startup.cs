@@ -29,7 +29,7 @@ namespace WebApplication1
         {
             services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
         );
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<abcContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
